@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEPNKJ | CLASSIFIED DOCS</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --panel: #0a0a0a;
+            --accent: #00ccff;
+            --text: #e0e0e0;
+            --code-bg: #111;
+            --border: rgba(0, 204, 255, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Courier New', monospace; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .sidebar {
+            width: 250px;
+            background: #020202;
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 20px; font-weight: 900; letter-spacing: 2px;
+            color: #fff; margin-bottom: 20px; display: block;
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-item {
+            display: block; color: #666; text-decoration: none;
+            padding: 10px 0; font-size: 12px; letter-spacing: 1px;
+            transition: 0.3s; border-bottom: 1px solid #111;
+        }
+        .nav-item:hover { color: var(--accent); padding-left: 10px; }
+
+        /* MAIN CONTENT */
+        .content {
+            margin-left: 250px;
+            padding: 50px 80px;
+            max-width: 1000px;
+        }
+
+        h1 { font-size: 40px; color: #fff; margin-bottom: 10px; }
+        h2 { font-size: 24px; color: var(--accent); margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        h3 { font-size: 18px; color: #fff; margin-top: 25px; margin-bottom: 10px; }
+        p { font-size: 14px; line-height: 1.6; color: #bbb; margin-bottom: 15px; }
+        
+        ul { margin-left: 20px; margin-bottom: 20px; }
+        li { font-size: 14px; color: #bbb; margin-bottom: 5px; }
+
+        /* CODE BLOCKS */
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            font-size: 12px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        /* ALERT BOXES */
+        .alert {
+            background: rgba(255, 0, 85, 0.1);
+            border-left: 4px solid #ff0055;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .alert strong { color: #ff0055; }
+
+        .pro-tip {
+            background: rgba(0, 204, 255, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .pro-tip strong { color: var(--accent); }
+
+      /* ========================================= */
+        /* --- RESPONSIVE FIXES (TABLET & MOBILE) -- */
+        /* ========================================= */
+
+        /* TABLET & SMALL DESKTOPS (Max 1024px) */
+        @media (max-width: 1024px) {
+            .sidebar { width: 220px; padding: 20px 15px; }
+            .content { margin-left: 220px; padding: 40px 40px; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 22px; }
+        }
+
+        /* MOBILE DEVICES (Max 768px) */
+        @media (max-width: 768px) {
+            body { display: block; } /* Stack vertically instead of flex */
+            
+            /* Sidebar turns into a clean Top Navigation Block */
+            .sidebar { 
+                position: relative; 
+                width: 100%; 
+                height: auto; 
+                border-right: none; 
+                border-bottom: 2px solid var(--accent);
+                padding: 30px 20px 20px;
+                background: #020202;
+            }
+
+            .logo { text-align: center; font-size: 24px; margin-bottom: 10px; }
+            
+            /* Center the category dividers (/// IMPULSE V3) */
+            .sidebar div { 
+                text-align: center; 
+                margin: 20px 0 10px !important; 
+                border-bottom: 1px solid #111; 
+                padding-bottom: 10px;
+            }
+
+            /* Make links 2-columns on mobile to save vertical scrolling */
+            .nav-item { 
+                display: inline-block; 
+                width: 48%; 
+                border-bottom: none; 
+                padding: 6px 0;
+                font-size: 11px;
+            }
+
+            /* Main Content scaling for small screens */
+            .content { 
+                margin-left: 0; 
+                padding: 30px 20px 60px; 
+            }
+            
+            h1 { font-size: 26px; line-height: 1.3; margin-bottom: 15px; }
+            h2 { font-size: 18px; margin-top: 30px; padding-bottom: 8px; }
+            h3 { font-size: 16px; margin-top: 20px; }
+            p, li { font-size: 13px; line-height: 1.7; }
+            
+            /* Ensure Code Blocks and Alert boxes don't break the screen width */
+            .code-block { 
+                font-size: 10px; 
+                padding: 12px; 
+                overflow-x: auto; 
+                border-radius: 4px;
+            }
+            .alert, .pro-tip { padding: 12px; font-size: 12px; }
+        }
+
+        /* ULTRA SMALL PHONES (Max 400px) */
+        @media (max-width: 400px) {
+            .nav-item { width: 100%; display: block; text-align: center; border-bottom: 1px solid #111; }
+            h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <a href="index.html" class="logo">AEPNKJ <span>///</span> DOCS</a>
+        
+        <div style="color: #666; font-size: 10px; margin: 20px 0 5px; letter-spacing: 2px;">/// IMPULSE V3</div>
+        <a href="#install" class="nav-item">01. INSTALLATION</a>
+        <a href="#debug" class="nav-item">02. REGISTRY FIX</a>
+        <a href="#interface" class="nav-item">03. INTERFACE</a>
+        <a href="#features" class="nav-item">04. MODULES</a>
+        <a href="#shortcuts" class="nav-item">05. SHORTCUTS</a>
+
+        <div style="color: #ff0055; font-size: 10px; margin: 30px 0 5px; letter-spacing: 2px;">/// CATALYST</div>
+        <a href="#install-catalyst" class="nav-item" onmouseover="this.style.color='#ff0055'" onmouseout="this.style.color='#666'">06. INSTALLATION</a>
+        <a href="#catalyst-features" class="nav-item" onmouseover="this.style.color='#ff0055'" onmouseout="this.style.color='#666'">07. CAPABILITIES</a>
+    </nav>
+
+    <div class="content">
+        <h1>IMPULSE DOCUMENTATION</h1>
+        <p>Operational Manual for AEPNKJ IMPULSE V3.0. Read before deployment.</p>
+
+        <h2 id="install">01. INSTALLATION PROTOCOL</h2>
+        <p>Impulse V3 is an unsigned extension. You must install it manually into the Adobe CEP directory.</p>
+        
+        <h3>Windows Path:</h3>
+        <div class="code-block">C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\</div>
+        
+        <h3>Mac OS Path:</h3>
+        <div class="code-block">/Library/Application Support/Adobe/CEP/extensions/</div>
+        
+        <p>1. Extract the downloaded folder.<br>
+        2. Move the entire <strong>com.aepnkj.impulse</strong> folder into the path above.<br>
+        3. Restart Adobe After Effects.</p>
+
+        <h2 id="debug">02. CRITICAL: DEBUG MODE FIX</h2>
+        <div class="alert">
+            <strong>⚠️ SYSTEM ALERT:</strong> If the extension panel is blank or buttons don't work, you must enable "PlayerDebugMode".
+        </div>
+        <p>Since this is a custom tool, Windows requires a registry key to allow it to run.</p>
+
+        <h3>One-Click Fix (Windows):</h3>
+        <p>1. Press <strong>Win + R</strong><br>
+        2. Type <strong>regedit</strong><br>
+        3. Navigate to: <code>HKEY_CURRENT_USER/Software/Adobe/CSXS.11</code> (or your version)<br>
+        4. Right Click > New > String Value<br>
+        5. Name: <strong>PlayerDebugMode</strong> | Value: <strong>1</strong></p>
+
+        <h2 id="interface">03. INTERFACE OVERVIEW</h2>
+        <p>The panel is divided into three strategic sectors:</p>
+        <ul>
+            <li><strong>MAIN:</strong> Core animation tools (Ease, Anchor, Wiggle).</li>
+            <li><strong>TOOLS:</strong> Layer manipulation (Cuts, Duration, Swapper).</li>
+            <li><strong>SYS:</strong> Settings, Visual Themes, and Cache Nuke.</li>
+        </ul>
+
+        <h2 id="features">04. CORE MODULES</h2>
+        
+        <h3>⚡ Speed Influence</h3>
+        <p>Replaces the Graph Editor. Enter your desired Influence % (e.g., 75) and click Apply. The system will auto-detect if your keyframes are Linear and warn you.</p>
+
+        <h3>🔄 Smart Interchange</h3>
+        <p>The crown jewel of V3. Select a layer, click Swap, and choose a new file. Impulse will replace the source but <strong>mathematically calculate</strong> the scale to match the previous layer's visual size exactly.</p>
+
+        <h3>💾 Cache Nuke</h3>
+        <p>Clears RAM and Disk Cache instantly without opening preferences. Use this when After Effects starts lagging.</p>
+
+        <div class="pro-tip">
+            <strong>PRO TIP:</strong> Use the <strong>"Auto-Fit"</strong> module to instantly resize massive images to fit your composition size.
+        </div>
+
+        <h2 id="shortcuts">05. WORKFLOW SHORTCUTS</h2>
+        <p>Impulse supports modifier keys for advanced functionality:</p>
+        <ul>
+            <li><strong>Smart Pre-Comp (Click):</strong> Pre-composes each selected layer individually.</li>
+            <li><strong>Smart Pre-Comp (Shift + Click):</strong> Merges all selected layers into ONE pre-comp.</li>
+            <li><strong>Trim In/Out:</strong> These buttons respect the Playhead (CTI) location accurately.</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #333; margin: 60px 0;">
+        
+        <h1 style="color: #ff0055;">CATALYST DOCUMENTATION</h1>
+        <p>Operational Manual for Catalyst Plugin. Read before deployment.</p>
+
+        <h2 id="install-catalyst" style="color: #ff0055; border-bottom-color: rgba(255,0,85,0.2);">06. INSTALLATION PROTOCOL</h2>
+        <p>Unlike Impulse, Catalyst is a native .aex plugin and comes with an automated setup wizard.</p>
+        
+        <div class="pro-tip" style="border-left-color: #ff0055; background: rgba(255, 0, 85, 0.05);">
+            <strong style="color: #ff0055;">PRO TIP:</strong> Simply run the <strong>catalyst_Installer.exe</strong> file. It will automatically locate your Adobe MediaCore folder and install the plugin globally for all versions of After Effects.
+        </div>
+
+        <h3>Manual Verification Path (Windows):</h3>
+        <div class="code-block" style="color: #ff0055; border-color: rgba(255,0,85,0.3);">C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\catalyst\</div>
+        
+        <h2 id="catalyst-features" style="color: #ff0055; border-bottom-color: rgba(255,0,85,0.2);">07. CORE CAPABILITIES & MODULES</h2>
+        
+        <h3 style="color: #fff;">🚀 Core Engine & Stability</h3>
+        <p><strong>Bulletproof Architecture:</strong> Built entirely on C++ and a JS Bridge using an "Async Queue System" (IdleHook). This guarantees that opening the UI or applying effects will never cause After Effects to freeze, deadlock, or crash. It is 100% stable and indestructible.</p>
+        <p><strong>Universal Scanner:</strong> Instantly indexes your entire library. It automatically pulls all Native Effects, 3rd Party Plugins (Sapphire, BCC, Deep Glow, etc.), and custom .ffx Presets from your Documents/Program Files into one unified search engine.</p>
+
+        <h3 style="color: #fff;">🎨 Premium "God Tier" UI</h3>
+        <p><strong>Hardware Accelerated:</strong> Powered by DirectX 11 and ImGui, ensuring the interface launches instantly with absolutely zero lag.</p>
+        <p><strong>Cyberpunk Aesthetics:</strong> Features a sleek translucent dark glassmorphism background (with a Light Mode option), highlighted by a custom glowing Cyan-to-Purple gradient separator for a premium Mac-Spotlight feel.</p>
+        <p><strong>Dynamic Customization:</strong> Use live sliders to adjust the Window Width and UI Scale (text/button sizes) to perfectly fit your workspace.</p>
+
+        <h3 style="color: #fff;">⚡ Workflow Enhancements</h3>
+        <p><strong>Instant Apply:</strong> Search your desired effect and simply hit Enter or click. The effect is applied to your selected layer instantly.</p>
+        <p><strong>Custom Hotkey Trigger:</strong> Don't be limited by default shortcuts. Bind Catalyst to open with Tab, Space, Enter, or set a completely custom key combination (like F3 or Shift+A) from the dropdown.</p>
+        <p><strong>⭐ Smart Favorites Manager:</strong> Pin your most frequently used effects so they always stay at the top. Easily manage them using the Auto-Suggest bar located in the Settings tab.</p>
+        <p><strong>📷 Snapshot & Gallery System:</strong> Click <strong>[ SNAP ]</strong> to communicate directly with the AE render engine and save a high-quality .png of your current frame without any workflow interruption. Click <strong>[ GLRY ]</strong> to instantly open your Windows save directory.</p>
+        <p><strong>💾 Auto-Save Data System:</strong> Your preferences are never lost. UI size, themes, hotkeys, and favorites are automatically saved to a <code>Catalyst_Settings.ini</code> file in your Documents folder. Every time you restart AE, everything is exactly how you left it.</p>
+
+        <br><br><br>
+        <p style="text-align: center; font-size: 10px; color: #444;">© 2026 AEPNKJ. SECURE CONNECTION TERMINATED.</p>
+    </div>
+
+</body>
+</html>
