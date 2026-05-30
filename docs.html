@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEPNKJ // Suite - Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&amp;f[]=satoshi@400,500,700&amp;f[]=space-grotesk@400,500,700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#E63946',
+            accent: '#FFD60A',
+            dark: '#0A0E27',
+            darker: '#060919',
+            cream: '#F1FAEE',
+            teal: '#457B9D',
+            surface: '#111638',
+            surfaceLight: '#1a2050',
+          },
+          fontFamily: {
+            display: ['CabinetGrotesk', 'Space Grotesk', 'sans-serif'],
+            body: ['Satoshi', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0E27; }
+    ::-webkit-scrollbar-thumb { background: #E63946; border-radius: 3px; }
+    
+    .grain-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    .glass {
+      background: rgba(17, 22, 56, 0.6);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    .glass-light {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .mesh-gradient {
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 30%, rgba(230,57,70,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 500px at 80% 60%, rgba(69,123,157,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 80%, rgba(255,214,10,0.04) 0%, transparent 70%);
+    }
+    
+    .hr-deco {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(230,57,70,0.3), rgba(255,214,10,0.2), transparent);
+    }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen bg-dark font-body text-cream relative overflow-x-hidden mesh-gradient">
+  <!-- Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-darker border-b border-white/5 h-20">
+    <div class="max-w-7xl mx-auto px-3 sm:px-8 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Interactive CSS/SVG Logo -->
+        <div class="relative group cursor-pointer flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+          <div class="absolute inset-0 rounded-xl bg-gradient-to-tr from-primary via-accent to-teal opacity-0 group-hover:opacity-40 blur-md transition-opacity duration-500"></div>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 glass-light rounded-xl flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-teal/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-700"></div>
+            <svg class="w-4 h-4 sm:w-5 h-5 text-white/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L21 12L12 21L3 12L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" class="group-hover:stroke-primary transition-all duration-500" />
+              <path d="M10 15L14 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover:stroke-accent transition-all duration-500" />
+            </svg>
+          </div>
+        </div>
+        <span class="font-display font-bold text-sm sm:text-lg tracking-tight select-none">AEPNKJ<span class="text-primary">//</span>Suite</span>
+      </a>
+      <a href="index.html" class="glass hover:bg-white/10 text-white/80 font-display font-medium px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl transition-all flex items-center gap-1.5 text-xs sm:text-sm flex-shrink-0">
+        <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+        <span class="hidden min-[380px]:inline">Back to Suite</span><span class="min-[380px]:hidden inline">Back</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-3 sm:px-8 pt-28 pb-24 grid lg:grid-cols-4 gap-8">
+    <!-- Sticky Sidebar -->
+    <aside class="lg:col-span-1 lg:sticky lg:top-28 h-fit w-full overflow-hidden flex flex-col gap-6">
+      <div class="glass rounded-2xl p-4 sm:p-5 flex flex-col gap-4 w-full">
+        <span class="text-xs text-white/30 uppercase tracking-widest font-display font-bold hidden lg:block">Documentation</span>
+        <nav class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 lg:gap-1 pb-1 lg:pb-0 scrollbar-none max-w-full select-none">
+          <a href="#overview" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:book-open"></iconify-icon> Overview
+          </a>
+          <div class="hidden lg:block h-px bg-white/5 my-2"></div>
+          
+          <span class="hidden lg:block text-[10px] text-primary/70 uppercase tracking-widest font-display font-semibold px-3 mb-1">Impulse v7</span>
+          <a href="#impulse-about" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:info"></iconify-icon> <span class="lg:inline hidden">About Extension</span><span class="lg:hidden inline">About Impulse</span>
+          </a>
+          <a href="#impulse-install" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:download"></iconify-icon> <span class="lg:inline hidden">Installation</span><span class="lg:hidden inline">Install Impulse</span>
+          </a>
+          <a href="#impulse-debug" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:terminal"></iconify-icon> <span class="lg:inline hidden">Registry Debug</span><span class="lg:hidden inline">Impulse Debug</span>
+          </a>
+          
+          <div class="hidden lg:block h-px bg-white/5 my-2"></div>
+          
+          <span class="hidden lg:block text-[10px] text-accent/70 uppercase tracking-widest font-display font-semibold px-3 mb-1">Catalyst v3</span>
+          <a href="#catalyst-about" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:info"></iconify-icon> <span class="lg:inline hidden">About Plugin</span><span class="lg:hidden inline">About Catalyst</span>
+          </a>
+          <a href="#catalyst-install" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:download"></iconify-icon> <span class="lg:inline hidden">Installation</span><span class="lg:hidden inline">Install Catalyst</span>
+          </a>
+
+          <div class="hidden lg:block h-px bg-white/5 my-2"></div>
+          
+          <span class="hidden lg:block text-[10px] text-teal/70 uppercase tracking-widest font-display font-semibold px-3 mb-1">Wind v3</span>
+          <a href="#wind-about" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:info"></iconify-icon> <span class="lg:inline hidden">About Extension</span><span class="lg:hidden inline">About Wind</span>
+          </a>
+          <a href="#wind-install" class="text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-white/60 hover:text-white whitespace-nowrap flex-shrink-0">
+            <iconify-icon icon="lucide:download"></iconify-icon> <span class="lg:inline hidden">Installation</span><span class="lg:hidden inline">Install Wind</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-3 flex flex-col gap-8 lg:gap-12 w-full min-w-0">
+      <!-- Section: Overview -->
+      <section id="overview" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 w-full overflow-hidden">
+        <span class="text-xs text-primary font-display font-bold uppercase tracking-wider">AEPNKJ Suite Manual</span>
+        <h1 class="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl mt-2 mb-4 sm:mb-6">System Architecture Overview</h1>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          The AEPNKJ Suite is a professional-grade ecosystem designed to accelerate motion workflows inside Adobe After Effects. It consists of two structural formats:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="glass-light rounded-2xl p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <iconify-icon icon="lucide:puzzle" class="text-xl sm:text-2xl text-primary"></iconify-icon>
+              <h3 class="font-display font-bold text-base sm:text-lg">CEP Extensions</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-white/40 leading-relaxed">
+              <strong>Impulse v7</strong> &amp; <strong>Wind v3</strong> run on Adobe's CEP (Common Extensibility Platform) framework. They integrate directly into AE's panel system and use HTML5/JS frontend bridges connected to ExtendScript (JSX) rendering cores.
+            </p>
+          </div>
+          <div class="glass-light rounded-2xl p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <iconify-icon icon="lucide:cpu" class="text-xl sm:text-2xl text-accent"></iconify-icon>
+              <h3 class="font-display font-bold text-base sm:text-lg">Native Plug-ins</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-white/40 leading-relaxed">
+              <strong>Catalyst v3</strong> is a native C++ compiled binary (.aex). It hooks directly into the After Effects engine, providing high-performance GPU-accelerated layouts (DirectX 11 &amp; ImGui) and instant system access without extension bottlenecks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Impulse About -->
+      <section id="impulse-about" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 border-l-4 border-primary w-full overflow-hidden">
+        <span class="text-xs text-primary font-display font-bold uppercase tracking-wider">AE Extension Suite</span>
+        <h2 class="font-display font-extrabold text-xl sm:text-2xl md:text-3xl mt-2 mb-4 sm:mb-6">Impulse v7 (Workflow Extension)</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          Impulse is the ultimate productivity and automation extension. Everything is built-in directly to make your everyday After Effects workflow infinitely faster. Rather than navigating deep preference menus, Impulse wraps everything you need in an offline-capable, lightweight workspace.
+        </p>
+        <h4 class="font-display font-bold text-white text-sm sm:text-base mb-3">Core Modules Included:</h4>
+        <ul class="list-disc list-inside text-white/40 text-xs sm:text-sm flex flex-col gap-2 pl-2">
+          <li><strong>Speed Influence:</strong> Instantly apply precise easing percentages to multiple selected keyframes.</li>
+          <li><strong>Smart Interchange:</strong> Scale and fit newly swapped assets automatically based on original layout dimensions.</li>
+          <li><strong>Cache Nuke:</strong> Clear disk and RAM caches in a single click, keeping your system fast.</li>
+          <li><strong>Auto-Fit Canvas:</strong> Rescale media objects to fit composition boundaries instantly.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Impulse Install -->
+      <section id="impulse-install" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 w-full overflow-hidden">
+        <h3 class="font-display font-bold text-lg sm:text-xl mb-4 flex items-center gap-2">
+          <iconify-icon icon="lucide:folder" class="text-primary"></iconify-icon>
+          Impulse Installation Path
+        </h3>
+        <p class="text-white/45 text-xs sm:text-sm mb-6">
+          Since Impulse is a CEP Extension, you must place the extracted folder manually inside Adobe's extensions directory.
+        </p>
+        <div class="flex flex-col gap-4 mb-6">
+          <div>
+            <div class="text-[10px] sm:text-xs text-white/30 uppercase tracking-widest font-display font-semibold mb-1">Windows Destination:</div>
+            <div class="bg-darker/60 rounded-xl p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-primary/80 border border-white/5 select-all break-all overflow-x-auto w-full">
+              C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.aepnkj.impulse
+            </div>
+          </div>
+          <div>
+            <div class="text-[10px] sm:text-xs text-white/30 uppercase tracking-widest font-display font-semibold mb-1">macOS Destination:</div>
+            <div class="bg-darker/60 rounded-xl p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-primary/80 border border-white/5 select-all break-all overflow-x-auto w-full">
+              /Library/Application Support/Adobe/CEP/extensions/com.aepnkj.impulse
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Impulse Debug -->
+      <section id="impulse-debug" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 w-full overflow-hidden">
+        <div class="bg-red-500/10 border-l-4 border-red-500 rounded-r-2xl p-4 sm:p-5 mb-6">
+          <div class="flex items-center gap-2 text-red-400 font-display font-bold mb-2 text-sm sm:text-base">
+            <iconify-icon icon="lucide:alert-triangle" class="text-lg"></iconify-icon>
+            PlayerDebugMode Requirement
+          </div>
+          <p class="text-xs text-white/50 leading-relaxed">
+            Unsigned CEP extensions will fail to load or show blank panels in After Effects by default. You must configure Adobe CSXS debug mode to enable them.
+          </p>
+        </div>
+        <h4 class="font-display font-bold text-white text-sm sm:text-base mb-3">Enabling Debug Mode on Windows:</h4>
+        <ol class="list-decimal list-inside text-white/40 text-xs sm:text-sm flex flex-col gap-2 pl-2 mb-6">
+          <li>Press <kbd class="bg-white/10 px-1.5 py-0.5 rounded text-white font-mono">Win + R</kbd>, type <code class="font-mono text-white/80">regedit</code>, and hit Enter.</li>
+          <li>Navigate to <code class="font-mono text-white/80">HKEY_CURRENT_USER\Software\Adobe\CSXS.11</code> (or whichever CSXS versions correspond to your After Effects install, like CSXS.9 to CSXS.11).</li>
+          <li>Right-click in the right pane, select <strong>New > String Value</strong>.</li>
+          <li>Name the value <code class="font-mono text-primary font-bold">PlayerDebugMode</code>.</li>
+          <li>Double-click it and set its Value Data to <code class="font-mono text-primary font-bold">1</code>.</li>
+        </ol>
+      </section>
+
+      <!-- Section: Catalyst About -->
+      <section id="catalyst-about" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 border-l-4 border-accent w-full overflow-hidden">
+        <span class="text-xs text-accent font-display font-bold uppercase tracking-wider">Native C++ Plugin</span>
+        <h2 class="font-display font-extrabold text-xl sm:text-2xl md:text-3xl mt-2 mb-4 sm:mb-6">Catalyst v3 (Effect Search Plugin)</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          Catalyst is a lightning-fast native plugin that serves as a highly functional, search-on-the-fly console engine for all your AE effects and presets. Designed to keep editors in the zone, Catalyst operates with a background async queue framework that guarantees After Effects will never experience UI freezing or locking when scanning plugins.
+        </p>
+        <h4 class="font-display font-bold text-white text-sm sm:text-base mb-3">Key Features:</h4>
+        <ul class="list-disc list-inside text-white/40 text-xs sm:text-sm flex flex-col gap-2 pl-2">
+          <li><strong>Instant Universal Scanner:</strong> Indices internal effects, third-party plug-ins (Sapphire, BCC, Red Giant), and user preset paths simultaneously.</li>
+          <li><strong>ImGui DirectX 11 Interface:</strong> Ultra-responsive, GPU-accelerated floating search bar.</li>
+          <li><strong>Favorites System:</strong> Fast key bindings and quick-pin filters to access regular assets immediately.</li>
+          <li><strong>Snapshot Capture:</strong> Built-in canvas export to capture PNG thumbnails directly to folders.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Catalyst Install -->
+      <section id="catalyst-install" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 w-full overflow-hidden">
+        <h3 class="font-display font-bold text-lg sm:text-xl mb-4 flex items-center gap-2">
+          <iconify-icon icon="lucide:file-binary" class="text-accent"></iconify-icon>
+          Catalyst Installation Path (Native Plugin)
+        </h3>
+        <p class="text-white/45 text-xs sm:text-sm mb-6">
+          Catalyst is a native binary plugin (not an extension). Run the <strong>catalyst_Installer.exe</strong> setup manager to place the C++ plugin files directly into Adobe's shared MediaCore directory automatically. If performing manual deployment, copy the <code class="font-mono text-white/80">.aex</code> plugin folder here:
+        </p>
+        <div class="bg-darker/60 rounded-xl p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-accent/80 border border-white/5 select-all break-all overflow-x-auto w-full mb-6">
+          C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\catalyst\
+        </div>
+      </section>
+
+      <!-- Section: Wind About -->
+      <section id="wind-about" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 border-l-4 border-teal w-full overflow-hidden">
+        <span class="text-xs text-teal font-display font-bold uppercase tracking-wider">AE Graph Extension</span>
+        <h2 class="font-display font-extrabold text-xl sm:text-2xl md:text-3xl mt-2 mb-4 sm:mb-6">Wind v3 (Ease Curve Graph Extension)</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          Wind is a professional graph easing editor extension designed specifically to bypass the limitations of the default After Effects graph workspace. Built around a five-engine curve architecture (Bezier, Elastic, Steps, Bounce, Wave), Wind lets you generate precise keyframe velocities dynamically with smooth easing curves and real-time previews.
+        </p>
+      </section>
+
+      <!-- Section: Wind Install -->
+      <section id="wind-install" class="glass rounded-3xl p-5 sm:p-8 lg:p-10 w-full overflow-hidden">
+        <h3 class="font-display font-bold text-lg sm:text-xl mb-4 flex items-center gap-2">
+          <iconify-icon icon="lucide:wind" class="text-teal"></iconify-icon>
+          Wind Installation Path
+        </h3>
+        <p class="text-white/45 text-xs sm:text-sm mb-6">
+          Like Impulse, Wind v3 is a CEP Extension and resides in the standard extensions directories:
+        </p>
+        <div class="flex flex-col gap-4 mb-6">
+          <div>
+            <div class="text-[10px] sm:text-xs text-white/30 uppercase tracking-widest font-display font-semibold mb-1">Windows Destination:</div>
+            <div class="bg-darker/60 rounded-xl p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-teal/80 border border-white/5 select-all break-all overflow-x-auto w-full">
+              C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.aepnkj.wind
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative border-t border-white/5 py-12 bg-darker/40 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <!-- Interactive CSS/SVG Logo for Footer -->
+        <div class="relative group cursor-pointer flex items-center justify-center w-10 h-10 flex-shrink-0">
+          <div class="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary via-accent to-teal opacity-0 group-hover:opacity-40 blur-sm transition-opacity duration-500"></div>
+          <div class="relative w-8 h-8 glass-light rounded-lg flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-teal/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-700"></div>
+            <svg class="w-4 h-4 text-white/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L21 12L12 21L3 12L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" class="group-hover:stroke-primary transition-all duration-500" />
+              <path d="M10 15L14 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover:stroke-accent transition-all duration-500" />
+            </svg>
+          </div>
+        </div>
+        <span class="font-display font-bold text-base sm:text-lg tracking-tight select-none">AEPNKJ<span class="text-primary">//</span>Suite</span>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs sm:text-sm text-white/40">
+        <span>© 2026 AEPNKJ · <a href="mailto:pankajsharma16509610@gmail.com" class="hover:text-accent transition-colors">pankajsharma16509610@gmail.com</a></span>
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
